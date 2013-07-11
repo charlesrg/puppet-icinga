@@ -1,4 +1,3 @@
-
 class icinga::gui {
 
   include apache
@@ -94,7 +93,7 @@ class icinga::gui {
     docroot            => $icinga::params::gui_type ? { default => '/usr/share/icinga/', 'web' => '/usr/share/icinga-web/pub' },
     docroot_owner      => root,
     docroot_group      => root,
-    template           => "icinga/apache.conf.erb",
+    content            => template('icinga/apache.conf.erb'),
     configure_firewall => $icinga::params::configure_firewall,
   }
 
